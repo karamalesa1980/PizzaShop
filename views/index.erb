@@ -1,11 +1,38 @@
 <h2>Welcome to Pizza Shop!</h2>
 
 <% @products.each do |p| %>
-	<div class="col-md-3">
-		<%= p.title %>
-	</div>
+
+	<div class="row-1">
+		<div class="col-md-2">
+			<div>
+				<%= p.title %>
+			</div>
+
+			<div>
+				<img src="<%= p.path_to_image %>" class="img-responsive" alt="Responsive image"> 
+			</div>
+
+			<div>
+				<%= p.description %>
+			</div>
+
+			<div>
+				<%= p.price %>-руб.
+			</div>
+
+		</div>
+	</div>	
 <% end %>
 <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div>
 
 <button class="btn btn-primary" onclick="something()">Click me!</button>
 
+</div>
