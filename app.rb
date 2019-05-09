@@ -14,6 +14,7 @@ class Product < ActiveRecord::Base
 end 
 
 get '/' do
+	@products = Product.all
 	erb :index
 end
 
