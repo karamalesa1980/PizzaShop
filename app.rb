@@ -7,7 +7,7 @@ require 'active_record'
 require 'sqlite3'
 
 
-set :database, {adapter: "sqlite3", database: "pizzashop.db"}
+set :database, {adapter: "sqlite3", database: "pizzashop.sqlite3"}
 
 class Product < ActiveRecord::Base
   
