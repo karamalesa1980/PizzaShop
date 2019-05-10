@@ -32,5 +32,16 @@ class AddProducts < ActiveRecord::Migration[5.2]
       :is_best_offer => false,
       :path_to_image => '/images/03.jpg'
     })
+
+    Product.create ({
+      :title => 'Толстый фраер',
+      :description => 'Это мясная пицца',
+      :price => 400,
+      :size => 30,
+      :is_spicy => false,
+      :is_veg => true,
+      :is_best_offer => false,
+      :path_to_image => '/images/04.jpg'
+    })
   end
 end

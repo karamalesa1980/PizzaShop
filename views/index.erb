@@ -3,7 +3,7 @@
 <% @products.each do |p| %>
 
 	<div class="row-1">
-		<div class="col-md-2">
+		<div class="col-md-4">
 			<div>
 				<%= p.title %>
 			</div>
@@ -23,6 +23,12 @@
 			<div>
 				Цена: <%= p.price %> руб.
 			</div>
+
+			<div>
+				<button class="btn btn-success btn-sm">В корзину</button>
+			</div>
+
+			
 
 		</div>
 	</div>	
