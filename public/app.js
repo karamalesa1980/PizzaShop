@@ -10,3 +10,8 @@ function something()
 
 	alert(x);
 }
+
+function add_to_cart(id)
+{
+	alert('вы выбрали' + id);
+}
