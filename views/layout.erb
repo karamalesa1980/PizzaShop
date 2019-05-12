@@ -41,7 +41,7 @@
 			    <ul class="nav navbar-nav navbar-right">
 			    	<li>
 			    		<form action="/cart" method="POST">
-			    			<input id="orders_button" type="text" name="orders">
+			    			<input id="orders_button" type="hidden" name="orders">
   							<input class="btn btn-default btn-lg" type="submit" value="Корзина (0 шт.)">
 						</form>
 			    	</li>
@@ -58,7 +58,17 @@
 
 	</div>
 
+<script type="text/javascript">
 
+  $(function() {
+    update_orders_button();
+  });
+//  $('select[name="colorpicker"]').simplecolorpicker({
+//  picker: true
+//}).on('change', function() {
+//  $(document.body).css('background-color', $('select[name="colorpicker"]').val());
+//});
+</script>
    
   </body>
 </html>
