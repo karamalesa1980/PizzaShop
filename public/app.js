@@ -1,16 +1,3 @@
-function something()
-{
-
-	var x = window.localStorage.getItem('ccc');
-
-	x = x * 1 + 1;
-
-	window.localStorage.setItem('ccc', x);
-
-
-	alert(x);
-}
-
 function add_to_cart(id)
 {
   var key = 'product_' + id;
@@ -19,6 +6,7 @@ function add_to_cart(id)
   x = x * 1 + 1;
   window.localStorage.setItem(key, x);
 
+  update_orders_input();
   update_orders_button();
 }
 
@@ -41,6 +29,14 @@ function cart_get_number_of_items()
   return cnt;
 }
 
+
+function update_orders_input()
+{
+  orders = cart_get_orders();
+  $('#orders_input').val(orders);
+}
+
+
 function cart_get_orders()
 {
   var orders = '';
@@ -59,8 +55,9 @@ function cart_get_orders()
   return orders;
 }
 
+
 function update_orders_button()
 {
-  var orders = 'Корзина (' + cart_get_number_of_items() + ' шт.)';
-  $('#orders_button').val(orders);
+  var text = 'Корзина (' + cart_get_number_of_items() + ' шт.)';
+  $('#orders_button').val(text);
 }
