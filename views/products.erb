@@ -1,7 +1,7 @@
 <h1>Наша продукция:</h1>
 
 
-<table cellpadding="10" cellspacing="0" border="1">
+<table class="table table-bordered">  <!--cellpadding="10" cellspacing="0" border="1"-->
 <% @products.each do |product| %>
   <tr>
     <td>
@@ -14,7 +14,7 @@
     <td>
       <p><strong>Цена:</strong> <%= product.price %> руб.</p>
       <p><strong>Размер:</strong> <%= product.size %> см</p>
-      <p><button onclick="add_to_cart(<%= product.id %>)">Добавить в корзину</button></p>
+      <p><button onclick="add_to_cart(<%= product.id %>)" class="btn btn-success">Добавить в корзину</button></p>
     </td>
   </tr>
 <% end %>
