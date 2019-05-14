@@ -1,6 +1,6 @@
 <h2>Заказанные товары:</h2>
 
-<table border="1" cellspacing="0" cellpadding="10">
+<table border="1" cellspacing="0" cellpadding="10" class="table table-bordered">
   <tr>
     <th>Товар</th>
     <th>Цена</th>
@@ -33,16 +33,16 @@
 
 <h2>Оформить заказ:</h2>
 
-<form action="/place_order" method="POST">
+<form action="/place_order" method="POST" class="form-inline">
 
   <input type="hidden" name="order[orders_input]" value="<%= @orders_input %>">
 
-  <input type="text" name="order[name]" placeholder="Имя" value="">
-  <input type="text" name="order[phone]" placeholder="Телефон" value="">
-  <input type="text" name="order[address]" placeholder="Адрес доставки" value="">
+  <input class="form-control" type="text" name="order[name]" placeholder="Имя" value="">
+  <input class="form-control" type="text" name="order[phone]" placeholder="Телефон" value="">
+  <input class="form-control" type="text" name="order[address]" placeholder="Адрес доставки" value="">
 
   <br><br>
-  <p><button type="submit" value="Заказать">Заказать</button> <button value="Очистить" onclick="return cancel_order()">Очистить корзину</button></p>
+  <p><button type="submit" value="Заказать" class="btn btn-primary">Заказать</button> <button value="Очистить" onclick="return cancel_order()" class="btn btn-danger">Очистить корзину</button></p>
 </form>
 
-<%= @order.inspect%>
+
