@@ -84,3 +84,7 @@ get '/manager' do
   @order = Order.all
   erb :manager
 end
+
+post '/delete_order' do
+	erb :delete
+end	

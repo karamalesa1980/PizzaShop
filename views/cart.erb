@@ -33,16 +33,26 @@
 
 <h2>Оформить заказ:</h2>
 
+<div class="row">
+
 <form action="/place_order" method="POST" class="form-inline">
 
   <input type="hidden" name="order[orders_input]" value="<%= @orders_input %>">
-
+<div class="col-md-12"> 
   <input class="form-control" type="text" name="order[name]" placeholder="Имя" value="">
   <input class="form-control" type="text" name="order[phone]" placeholder="Телефон" value="">
   <input class="form-control" type="text" name="order[address]" placeholder="Адрес доставки" value="">
-
+</div>
   <br><br>
-  <p><button type="submit" value="Заказать" class="btn btn-primary">Заказать</button> <button value="Очистить" onclick="return cancel_order()" class="btn btn-danger">Очистить корзину</button></p>
+  <div class="col-md-1">
+  <p><button type="submit" value="Заказать" class="btn btn-primary">Заказать</button> </p>
 </form>
+</div>
+<div class="col-md-6">
+<form action="/delete_order" method="POST" class="form-inline">
+		<button value="Очистить" onclick="return cancel_order()" class="btn btn-danger">Отменить заказ</button>
+</form>
+</div>
+</div>
 
 
