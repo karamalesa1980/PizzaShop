@@ -5,6 +5,8 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 require 'active_record'
 require 'sqlite3'
+require 'rest-client'
+require 'json'
 
 
 set :database, {adapter: "sqlite3", database: "pizzashop.sqlite3"}
@@ -16,7 +18,13 @@ end
 class Order < ActiveRecord::Base
 end
 
+before do
+  course_valut
+  
+end
+
 get '/' do
+  
   erb :index
 end
 
@@ -88,3 +96,21 @@ end
 post '/delete_order' do
 	erb :delete
 end	
+# курс валют приват 24
+def course_valut 
+  
+  data = RestClient.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
+  ower = JSON.parse(data.body)
+  course_usd = ower[0]
+  course_eur = ower[1]
+# usd
+  @usd =  course_usd["ccy"]   
+  @usd_price_buy = course_usd["buy"].to_f
+  @usd_price_sale = course_usd["sale"].to_f
+#eur
+   @eur =  course_eur["ccy"]   
+  @eur_price_buy = course_eur["buy"].to_f
+  @eur_price_sale = course_eur["sale"].to_f
+   
+
+end

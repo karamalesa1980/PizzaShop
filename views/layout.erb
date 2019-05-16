@@ -38,8 +38,13 @@
 			      <li><a href="/products">Наша продукция</a></li>
 			      <li><a href="/manager">Заказы покупателей</a></li>
 			      <li><a href="/about">About</a></li>
+			      
 			    </ul>
+			    
 			    <ul class="nav navbar-nav navbar-right">
+			    	<li><a href="#"><strong>USD:</strong> <%= @usd_price_sale %> / <%= @usd_price_buy%> <strong>EUR:</strong><%= @eur_price_sale %> / <%= @eur_price_buy%></a></li>
+			      
+			    	
 			    	<li>
 			    		<form action="/cart" method="POST">
 			    			<input id="orders_input" type="hidden" name="orders">
