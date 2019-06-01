@@ -1,5 +1,6 @@
 #encoding: utf-8
 require 'rubygems'
+require 'date'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
@@ -7,6 +8,7 @@ require 'active_record'
 require 'sqlite3'
 require 'rest-client'
 require 'json'
+require 'redis-sinatra'
 
 
 set :database, {adapter: "sqlite3", database: "pizzashop.sqlite3"}
@@ -18,10 +20,11 @@ end
 class Order < ActiveRecord::Base
 end
 
+
 before do
-  course_valut
-  
+  cache_control course_valut, :must_revalidate, :max_age => 60000
 end
+
 
 get '/' do
   
@@ -95,12 +98,36 @@ end
 
 post '/delete_order' do
 	erb :delete
-end	
-# курс валют приват 24
-def course_valut 
-  
+end
+
+
+$CACHE = nil
+$CACHE_EXPIRED = nil
+
+def get_course_from_privat
+  puts "================= PRIVAT ==============================="
   data = RestClient.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
   ower = JSON.parse(data.body)
+
+  $CACHE = ower
+  $CACHE_EXPIRED = DateTime.now + 1.minutes
+
+  return ower
+end
+
+# курс валют приват 24
+def course_valut 
+  #puts $CACHE
+  #puts $CACHE_EXPIRED
+  
+  if $CACHE.nil?
+    ower = get_course_from_privat
+  elsif $CACHE_EXPIRED < DateTime.now
+    ower = get_course_from_privat
+  else
+    ower = $CACHE
+  end
+
   course_usd = ower[0]
   course_eur = ower[1]
 # usd

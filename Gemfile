@@ -10,3 +10,4 @@ gem 'rake', '~> 11.2', '>= 11.2.2'
 group :development do
   gem "tux"
 end
+gem 'redis-sinatra'
