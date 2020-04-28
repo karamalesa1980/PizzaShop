@@ -106,11 +106,11 @@ $CACHE_EXPIRED = nil
 
 def get_course_from_privat
   puts "================= PRIVAT ==============================="
-  data = RestClient.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
+  data = RestClient.get "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
   ower = JSON.parse(data.body)
 
   $CACHE = ower
-  $CACHE_EXPIRED = DateTime.now + 1.minutes
+  $CACHE_EXPIRED = DateTime.now + 12.hours
 
   return ower
 end
